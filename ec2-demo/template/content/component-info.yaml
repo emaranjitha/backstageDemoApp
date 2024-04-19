@@ -3,7 +3,7 @@ kind: Component
 metadata:
   name: ${{ values.name | dump }}
   annotations:
-    github.com/project-slug: sagar0419/aws-ec2 #name of the terraform repo
+    github.com/project-slug: emaranjitha/github-actions-series #name of the terraform repo
     backstage.io/techdocs-ref: dir:.
   title: 'IA for Instance Automation'
   description: An example of a Instance Creation.
