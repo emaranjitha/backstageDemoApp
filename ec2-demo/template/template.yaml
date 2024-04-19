@@ -12,39 +12,16 @@ spec:
     - title: EC2 Instance Creation
       required:
          - InstanceName
-         - Region
-         - InstanceType    
+            
       properties:
         InstanceName:
           title: Instance Name.
           type: string
           description: Name of the Instnace to be created.
+          default: 'App Server'
           ui:autofocus: true
           ui:options:
             rows: 5
-
-        Region:
-          title:  AWS Region
-          type: string
-          description: Name of the region where you want to create your create-ec2-instance eg:- us-east-1, ap-south-1 etc.
-          # ui:autofocus: true
-
-        InstanceType:
-          title: Type of Instance.
-          type: string
-          description: Type of the instance that you want to deploy, for eg:- t2.medium, t3.medium etc.
-          enum:
-            - t2.medium
-            - t2.small
-            - t2.micro
-            - t3.medium
-        action:
-          title: action
-          type: string
-          description: What action do you want to perform? Create or delete?
-          enum:
-            - apply
-            - destroy
 
     - title: Choose a Repository Location
       required:
@@ -85,13 +62,10 @@ spec:
       action: github:actions:dispatch
       input:
         workflowId:  instance.yml # ID of GitHub action WorkFlow
-        repoUrl: 'github.com?repo=aws-ec2&owner=sagar0419'
+        repoUrl: 'github.com?repo=github-actions-series&owner=emaranjitha'
         branchOrTagName: 'master'
         workflowInputs:
           instanceName: ${{ parameters.InstanceName }}
-          awsRegion: ${{ parameters.Region }}
-          instanceType: ${{ parameters.InstanceType }}
-          action: ${{ parameters.action }}
 
 # Registering new component in the catalog of backstage.
     - id: register
